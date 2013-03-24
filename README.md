@@ -18,3 +18,7 @@ Launch the game by compling and starting Playgame.
 
 
 This game won't play if you do not have the library.
+
+
+
+If you enjoy it, drop a line and let me know. :)
