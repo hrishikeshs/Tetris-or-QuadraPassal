@@ -12,7 +12,7 @@ http://jtf.acm.org/#Downloads
 download the acm.jar archive file and save it in the same directory as the rest of these files.
 
 I actually downloaded an audio file in the .au format for music.
-You may do the same. just save it with whatever name you want, but remember to chance 'mario.au' to your 
+You may do the same. just save it with whatever name you want, but remember to change 'mario.au' to your 
 chosen filename. Save all of these items in the same folder.
 Launch the game by compling and starting Playgame.
 
