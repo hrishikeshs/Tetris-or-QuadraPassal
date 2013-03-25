@@ -58,7 +58,7 @@ public class Playgame extends GraphicsProgram {
 	 * All the action happens in the run method. That is the way acm graphics library handles stuff.
 	 */
 	public static void main(String[] args) {
-		new Playgame().start();
+		new Playgame().start(args);
 	}
 
 	
@@ -88,11 +88,15 @@ public class Playgame extends GraphicsProgram {
 			break;
 
 			
-		default:
+		case KeyEvent.VK_UP:
 									if (canRotate())
 										Current.Rotate();
 									
-										
+			break;
+		
+		default:					if (canRotate())
+										Current.Rotate();
+		
 			break;
 		}
 
@@ -100,12 +104,17 @@ public class Playgame extends GraphicsProgram {
 
 	/* A piece can rotate if it doesn't go off the board 
 	 * and if it doesn't cross over into other pieces already on the board.
+	 * And rotation is forbidden if the falling piece is within a square of currently existing piece on the board.
 	 * This function tests for both those conditions.
 	 */
 	private boolean canRotate() {
 
+		if(!noElementInFront()) {
 		
-		if(getElementAt(Current.getX() + Current.getWidth() +  SIDE , Current.getY() + Current.getHeight()/2) == null) {
+			return false;
+		
+		}
+		else if(getElementAt(Current.getX() + Current.getWidth() +  SIDE , Current.getY() + Current.getHeight()/2) == null) {
 			
 	
 			if (getElementAt(Current.getX()+ Current.getWidth()/2,Current.getY() + Current.getHeight() + SIDE) != null)
@@ -378,7 +387,7 @@ public class Playgame extends GraphicsProgram {
 				
 			}
 			
-			pause(DELAY/2);
+			
 			if (canMoveDown()) {
 				
 				Current.move(0, SIDE);	//safety check. See if the piece is resting comfortably before dropping another piece. 
@@ -387,6 +396,7 @@ public class Playgame extends GraphicsProgram {
 			
 			clearFilledRows();		//see if the piece filled any of the rows and clear them before dropping next piece.
 			
+			pause(DELAY/2);			//pause and catch your breath
 			
 		}
 		
