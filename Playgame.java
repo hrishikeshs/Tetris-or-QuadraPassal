@@ -121,7 +121,8 @@ public class Playgame extends GraphicsProgram {
 				return false;
 	
 				
-			if((type == 1) && (Current.rotated == 1) && (Current.getX() + Current.getWidth() >= APPLICATION_WIDTH-4*SIDE))
+			if((type == 1) && (Current.rotated == 1) && (Current.getX() + Current.getWidth() >= APPLICATION_WIDTH-4*SIDE)
+					&& (getElementAt(Current.getX()-1,Current.getY()+5) != null) )
 				return false;
 		
 			if(Current.getX() + Current.getWidth() >= APPLICATION_WIDTH-SIDE) 
@@ -373,7 +374,8 @@ public class Playgame extends GraphicsProgram {
 			
 			dropNextBrick();
 			
-			if(!canMoveDown()) {	//if the incoming piece cannot move down, game is over.
+			
+			if(getElementAt(Current.getX(),Current.getY()+Current.getHeight() + 2) != null) {	//if the incoming piece cannot move down, game is over.
 				break;
 			}
 			
