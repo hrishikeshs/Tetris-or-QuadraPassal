@@ -141,16 +141,19 @@ public class Playgame extends GraphicsProgram {
 	 */
 	private boolean canMoveDown() {
 
-		return (noElementInFront());	
+		if (Current != null)
+			return (noElementInFront());
+		else
+			return false;
 	
 	}
 
 	//same drill
 	private boolean canMoveLeft() {
 		
-		return  ((Current.getX()  > 0) && (getElementAt(Current.getX()-1,Current.getY() + Current.getHeight()) == null)
-					&& (getElementAt(Current.getX()-1,Current.getY() + Current.getHeight()/2) == null));
-		
+		return  ((Current.getX()  > 0) && (getElementAt(Current.getX()-SIDE/2,Current.getY()) == null)
+				&& (getElementAt(Current.getX()-SIDE/2,Current.getY()+Current.getHeight()) == null));
+
 	}
 
 	
@@ -372,33 +375,38 @@ public class Playgame extends GraphicsProgram {
 		while (true) {
 
 			
-			dropNextBrick();
+			Current = dropNextBrick();
 			
 			
-			if(getElementAt(Current.getX(),Current.getY()+Current.getHeight() + 2) != null) {	//if the incoming piece cannot move down, game is over.
+			if(Current == null) {	//if the dropNextBrick() is unable to place the shape on the board, it returns a null. game over
 				break;
 			}
 			
 			
 			while (true) {
 				
-				Current.move(0, SIDE); //falls by a single row each time.
+				if(canMoveDown())
+					Current.move(0, SIDE); //falls by a single row each time.
+				
 				pause(DELAY);
-				if (!canMoveDown())
-					break;
 				
+				if (!canMoveDown()) {
+					
+					pause(DELAY);
+					
+					if(!canMoveDown())   //really can't go down any further? okay. time to break;
+						break;
+				}
+					
 			}
+								
+	
+			pause(DELAY/2);			//pause and catch your breath			
 			
-			
-			if (canMoveDown()) {
-				
-				Current.move(0, SIDE);	//safety check. See if the piece is resting comfortably before dropping another piece. 
-			}
-		
 			
 			clearFilledRows();		//see if the piece filled any of the rows and clear them before dropping next piece.
 			
-			pause(DELAY/2);			//pause and catch your breath
+			
 			
 		}
 		
@@ -520,15 +528,18 @@ public class Playgame extends GraphicsProgram {
 					
 					for(j = 0; j <= APPLICATION_WIDTH;) {
 			
-						temp = (GShape)getElementAt(j,k*SIDE);
+						temp = (GShape) getElementAt(j,k*SIDE);
 						if( (temp != null) && getElementAt(temp.getX(), temp.getY() + temp.getHeight()) == null)
 							temp.move(0,SIDE);
 						j += SIDE;
 					}
 				}
-			}
 		
+			
 		}
+			
+	}		
+
 				
 		
 		
@@ -557,7 +568,7 @@ public class Playgame extends GraphicsProgram {
 	
 	//Guess what this does? :)
 
-	private void dropNextBrick() {
+	private GShape dropNextBrick() {
 	
 		GShape[] MY_ARRAY = { new Block(), new Bar(), new FShape(), new LShape(), new TShape(), new ZigzagRight(), new ZigzagLeft() };
 		
@@ -569,9 +580,14 @@ public class Playgame extends GraphicsProgram {
 		
 		type = index;
 		
-		add(Current, 10 * SIDE, 0);
+		if (getElementAt(10*SIDE,SIDE) == null) {
+			add(Current, 10 * SIDE, 0);
 						 
-		return;
+			return Current;
+		}
+		else 
+			return null;
+		
 	}
 
 	
