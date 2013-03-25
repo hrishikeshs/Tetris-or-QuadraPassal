@@ -16,7 +16,7 @@ import acmx.export.java.io.FileReader;
 
 public class Playgame extends GraphicsProgram {
 
-  /**
+	/**
 	 * Eclipse bothers me if I don't put this in.
 	 */
 	private static final long serialVersionUID = 1L;
@@ -396,7 +396,7 @@ public class Playgame extends GraphicsProgram {
 		
 		GLabel gameover = new GLabel("GAME OVER");
 		gameover.setColor(Color.BLUE);
-		gameover.setFont("30 Font.SERIF");
+		gameover.setFont(new Font("Serif", Font.BOLD, 40));
 		add(gameover,100,5*SIDE);
 
 		try  
@@ -418,9 +418,9 @@ public class Playgame extends GraphicsProgram {
 			
 				GLabel Label = new GLabel("New High Score!");
 			
-				Label.setColor(Color.red);
-				Label.setFont("16 SANS_SERIF");
-				add(Label, 10, APPLICATION_HEIGHT/2);
+				Label.setColor(Color.MAGENTA);
+				Label.setFont(new Font("Sans-Serif", Font.BOLD, 40));
+				add(Label, 10, 7*SIDE);
 		
 		
 		
@@ -517,6 +517,10 @@ public class Playgame extends GraphicsProgram {
 			}
 		
 		}
+				
+		
+		
+		
 	}	
 		
 	
