@@ -4,11 +4,11 @@ import java.awt.Color;
 public class Bar extends GShape {
 
 	
-	/* This class implements the Shape 'I'. It is a compound object consisting of 'Bricks'.
+	/* This class implements the Shape 'I'. It is a compound object .
 	 * The positions of the brick could have been named better. But since it rotates and the  
 	 * bricks shift their position, I couldn't think of a name that is better than
 	 * 'first', 'second','third','fourth'.
-	 * The variable 'rotated' inherited from GShape keeps track of the Bar's current orientation. 
+	 * The variable 'orientation' inherited from GShape keeps track of the Bar's current orientation. 
 	 */
 	
 	
@@ -34,7 +34,7 @@ public class Bar extends GShape {
 		}
 
 		
-	/* This function flips the bar and sets the rotated variable appropriately */
+	/* This function flips the bar and sets the orientation variable appropriately */
 		
 		public void rotateShape() {
 			
