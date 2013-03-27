@@ -4,7 +4,7 @@ public class Block extends GShape {
 		
 	/* This class is a compound object that represents a 'square tetrimono'. Also called 'o'.
 	 * Since a square doesn't rotate, no rotation information is needed and it need not override the default 
-	 * implementation of Rotate() inherited by the GShape.
+	 * implementation of rotateShape() inherited by the GShape.
 	 */
 	
 	/*Private instance variables */ 
