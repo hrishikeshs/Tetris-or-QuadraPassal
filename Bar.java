@@ -3,7 +3,7 @@ import java.awt.Color;
 
 public class Bar extends GShape {
 
-  
+	
 	/* This class implements the Shape 'I'. It is a compound object consisting of 'Bricks'.
 	 * The positions of the brick could have been named better. But since it rotates and the  
 	 * bricks shift their position, I couldn't think of a name that is better than
@@ -14,11 +14,7 @@ public class Bar extends GShape {
 	
 	/*Private instance variables */
 	
-		private Color color   = Color.cyan; 
-		private Brick first   = new Brick(color);
-		private Brick second  = new Brick(color); 
-		private Brick third   = new Brick(color); 
-		private Brick fourth  = new Brick(color); 
+		private static final Color color   = Color.cyan; 
 		
 		
 	/* The positions of the bricks are all relative to an imaginary point - Origin. Assumed to be
@@ -26,34 +22,37 @@ public class Bar extends GShape {
 	 */
 		
 		public Bar() {
-			rotated  = 1;
 			
-			add(first.brick(),0,0);
-			add(second.brick(),0,SIDE);
-			add(third.brick(),0,2*SIDE);
-			add(fourth.brick(),0,3*SIDE);
+			super(color);
+			
+			orientation  = 1;
+			type = 1;
+			add(first,0,0);
+			add(second,0,SIDE);
+			add(third,0,2*SIDE);
+			add(fourth,0,3*SIDE);
 		}
 
 		
 	/* This function flips the bar and sets the rotated variable appropriately */
 		
-		public void Rotate() {
+		public void rotateShape() {
 			
-			if(rotated == 1) {
-				add(first.brick(),0,0);
-				add(second.brick(),SIDE,0);
-				add(third.brick(),2*SIDE,0);
-				add(fourth.brick(),3*SIDE,0);
+			if(orientation == 1) {
+				add(first,0,0);
+				add(second,SIDE,0);
+				add(third,2*SIDE,0);
+				add(fourth,3*SIDE,0);
 				
-				rotated = 2;
+				orientation = 2;
 			}
 			else {
-				add(first.brick(),0,0);
-				add(second.brick(),0,SIDE);
-				add(third.brick(),0,2*SIDE);
-				add(fourth.brick(),0,3*SIDE);
+				add(first,0,0);
+				add(second,0,SIDE);
+				add(third,0,2*SIDE);
+				add(fourth,0,3*SIDE);
 				
-				rotated = 1;
+				orientation = 1;
 			}
 		}	
 }
