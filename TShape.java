@@ -2,8 +2,8 @@ import java.awt.Color;
 
 public class TShape extends GShape {
 	
-	/* This class represents the 'T tetrimono' . It has a rotate() method that flips the
-	 * tetrimono appropriately. It inherits the 'rotated' field from GShape to keep
+	/* This class represents the 'T tetrimono' . It has a rotateShape() method that flips the
+	 * tetrimono appropriately. It inherits the 'orientation' field from GShape to keep
 	 * track of the current orientation.
 	 * Again, all positions are relative to the origin (0,0) assumed to be at the top left corner. 
 	 */
