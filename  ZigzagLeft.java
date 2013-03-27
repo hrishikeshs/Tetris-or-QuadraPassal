@@ -2,49 +2,48 @@ import java.awt.Color;
 
 public class ZigzagLeft extends GShape{
 
-  /* This class represents the 'Z tetrimono' . It has a rotate() method that flips the
+	/* This class represents the 'Z tetrimono' . It has a rotate() method that flips the
 	 * tetrimono appropriately. It inherits the 'rotated' field from GShape to keep
 	 * track of the current orientation.
 	 * Again, all positions are relative to the origin (0,0) assumed to be at the top left corner. 
 	 */	
 
-		private Color color   = Color.GREEN;
-		private Brick first   = new Brick(color); 
-		private Brick second  = new Brick(color);
-		private Brick third   = new Brick(color);
-		private Brick fourth  = new Brick(color);
+		private static final Color color   = Color.GREEN;
+		
 		
 		public ZigzagLeft() {
 
-			rotated = 1;
-			add(first.brick(),0,0);
-			add(second.brick(),SIDE,0);
-			add(third.brick(),SIDE,SIDE);
-			add(fourth.brick(),2*SIDE,SIDE);
+			super(color);
+			orientation = 1;
+			type = 6;
+			add(first,0,0);
+			add(second,SIDE,0);
+			add(third,SIDE,SIDE);
+			add(fourth,2*SIDE,SIDE);
 		}
 	
-		public void Rotate() {
+		public void rotateShape() {
 			
 			
-			if(rotated == 1) {
+			if(orientation == 1) {
 				
-				add(first.brick(),SIDE,0);
-				add(second.brick(),SIDE,SIDE);
-				add(third.brick(),0,SIDE);
-				add(fourth.brick(),0,2*SIDE);
+				add(first,SIDE,0);
+				add(second,SIDE,SIDE);
+				add(third,0,SIDE);
+				add(fourth,0,2*SIDE);
 				
 				
-				rotated = 2;
+				orientation = 2;
 			}
 			else {
 	
 
-				add(first.brick(),0,0);
-				add(second.brick(),SIDE,0);
-				add(third.brick(),SIDE,SIDE);
-				add(fourth.brick(),2*SIDE,SIDE);
+				add(first,0,0);
+				add(second,SIDE,0);
+				add(third,SIDE,SIDE);
+				add(fourth,2*SIDE,SIDE);
 				
-				rotated = 1;
+				orientation = 1;
 			}
 		}		
 		
