@@ -1,7 +1,7 @@
 import java.awt.Color;
 
 public class TShape extends GShape {
-  
+	
 	/* This class represents the 'T tetrimono' . It has a rotate() method that flips the
 	 * tetrimono appropriately. It inherits the 'rotated' field from GShape to keep
 	 * track of the current orientation.
@@ -10,62 +10,59 @@ public class TShape extends GShape {
 	
 	
 	/*private instance variables */
-		private Color color    = Color.magenta;
-		private Brick first    = new Brick(color);
-		private Brick second   = new Brick(color);
-		private Brick third    = new Brick(color);
-		private Brick fourth   = new Brick(color);
+		private static final Color color    = Color.magenta;
 	
-		
 		public TShape() {
 		
-			rotated  = 1;
-			add(first.brick(),0,0);
-			add(second.brick(),SIDE,0);
-			add(third.brick(),2*SIDE,0);
-			add(fourth.brick(),SIDE,SIDE);
+			super(color);
+			type = 4;
+			orientation  = 1;
+			add(first,0,0);
+			add(second,SIDE,0);
+			add(third,2*SIDE,0);
+			add(fourth,SIDE,SIDE);
 			
 		}
 		
-		public void Rotate() {
+		public void rotateShape() {
 			
 			
-			if(rotated == 1) {				
+			if(orientation == 1) {				
 				
-				add(first.brick(),SIDE,0);
-				add(second.brick(),SIDE,SIDE);
-				add(third.brick(),SIDE,2*SIDE);
-				add(fourth.brick(),0,SIDE);
-				rotated = 2;
+				add(first,SIDE,0);
+				add(second,SIDE,SIDE);
+				add(third,SIDE,2*SIDE);
+				add(fourth,0,SIDE);
+				orientation = 2;
 			}
-			else if(rotated == 2) {
+			else if(orientation == 2) {
 				
-				add(first.brick(),0,SIDE);
-				add(second.brick(),SIDE,SIDE);
-				add(third.brick(),2*SIDE,SIDE);
-				add(fourth.brick(),SIDE,0);
+				add(first,0,SIDE);
+				add(second,SIDE,SIDE);
+				add(third,2*SIDE,SIDE);
+				add(fourth,SIDE,0);
 				
-				rotated = 3;
+				orientation = 3;
 			}
-		   else if(rotated == 3) {
+		   else if(orientation == 3) {
 				
-			   add(first.brick(),0,0);
-			   add(second.brick(),0,SIDE);
-			   add(third.brick(),0,2*SIDE);
-			   add(fourth.brick(),SIDE,SIDE);
+			   add(first,0,0);
+			   add(second,0,SIDE);
+			   add(third,0,2*SIDE);
+			   add(fourth,SIDE,SIDE);
 			   
 				
 			   
-				rotated = 4;
+				orientation = 4;
 			}
 			
 		   else {
-			   	add(first.brick(),0,0);
-				add(second.brick(),SIDE,0);
-				add(third.brick(),2*SIDE,0);
-				add(fourth.brick(),SIDE,SIDE);
+			   	add(first,0,0);
+				add(second,SIDE,0);
+				add(third,2*SIDE,0);
+				add(fourth,SIDE,SIDE);
 				
-			    	    rotated = 1;
+			    orientation = 1;
 		   }
 		}	
 			
