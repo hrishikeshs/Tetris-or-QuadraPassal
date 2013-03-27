@@ -3,10 +3,9 @@ import java.awt.Color;
 import acm.graphics.*;
 
 /* This class represents the basic shape of the pieces. Since all the tetrimonos 
- * need to share the values of SIDE and the variable 'rotated' to keep 
+ * need to share the values of SIDE and the variable 'orientation' to keep 
  * track of their current orientation, this class is made a superclass from which
- * all other tetrimono classes are derived. Whenever a row is completed, to access and
- * remove parts of the compound shapes, this class also provides the 'removeBrick()' method.
+ * all other tetrimono classes are derived..
  */
 
 public class GShape extends GCompound{
@@ -54,10 +53,12 @@ public class GShape extends GCompound{
 		fourth.setFilled(true);		
 		
 	}	
-	
-	/*default implementation of Rotate() does nothing.The  subclasses need to override this method. */
-	
+
 	public GShape() {	}
+
+	/*default implementation of rotateShape() does nothing.The  subclasses need to override this method. */
+	
+
 	
 	
 	
